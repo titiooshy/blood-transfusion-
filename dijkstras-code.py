@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 G = nx.DiGraph()
 
 # Adding in the final part of the path
-# LV-> The start point, Body Part, weight
+# LV-> The start point, Body Part, weight of graph
 G.add_edge("LV", "Aorta", weight=1.0)
 
 # List of our nodes
