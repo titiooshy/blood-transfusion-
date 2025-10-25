@@ -1,6 +1,6 @@
 import networkx as nx
 
-veins = nx.Graph()
+veins = nx.DiGraph()
 
 
 for i in range(1, 184):
@@ -8,11 +8,11 @@ for i in range(1, 184):
 
 
 veins.remove_node(51)
-veins.add_node(51, {"color": "red"})
+veins.add_node(51, color="red")
 
 
 # head edges
-veins.add_edge_from(
+veins.add_edges_from(
     [
         (44, 46),  # left external jugular vein
         (46, 45),  # space between internal and external left veins
