@@ -1,22 +1,39 @@
 # Importing in our needed libraries into the code
 import networkx as nx
 import matplotlib.pyplot as plt
+from graph_setup import veins
 
 # Initilizting our graph, definition of our graph
-G = nx.DiGraph()
-
-# Adding in the final part of the path
-# LV-> The start point, Body Part, weight of graph
-G.add_edge("LV", "Aorta", weight=1.0)
-
-# List of our nodes
-G.add_edge("Aorta", "Art_Kidney", weight=1.8)
-G.add_edge("Art_Kidney", "Cap_Kidney", weight=3.0)
-G.add_edge("Cap_Kidney", "Vein_Kidney", weight=1.2)  # Dummy Values
+G = veins
 
 # Defining our starting and ending values of our nodes
 SOURCE = "LV"
 SINK = "LA"
+
+# setting up all the vertices that a blood transfer can start at
+start_vertices = []
+
+for v in range(1, 34):
+    start_vertices.add(v)
+
+for v in range(52, 81):
+    start_vertices.add(v)
+
+for v in range(146, 149):
+    start_vertices.add(v)
+
+start_vertices.add(115)
+start_vertices.add(116)
+start_vertices.add(121)
+start_vertices.add(124)
+start_vertices.add(116)
+start_vertices.add(134)
+start_vertices.add(135)
+start_vertices.add(126)
+start_vertices.add(125)
+start_vertices.add(96)
+start_vertices.add(184)
+start_vertices.add(183)
 
 # Implementing shortest path
 try:
@@ -41,10 +58,6 @@ if shortest_path_nodes:
 else:
     print("No path found between source and sink.")
     path_edges = []
-# Make up more positions
-pos = 
-# Set up node colors
-node_colors = 
 
 # Plotting and Visizualution of the paths
 plt.figure(figsize=(14, 10))
