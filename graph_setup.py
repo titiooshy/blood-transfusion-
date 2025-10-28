@@ -59,9 +59,12 @@ veins.add_weighted_edges_from(
         (161, 160, 1),  # internal thoracic vein
         (168, 169, 11),  # hepatic vein
         (170, 169, 11),  # hepatic vein
+        (176, 69, 11),
         (150, 34, 8),  # thoracoepigastric vein
         (35, 36, 6),  # subclavian vein
         (183, 46, 6),  # subclavian vein
+        (98, 181, 5),
+        (99, 181, 5),
     ]
 )
 
@@ -80,10 +83,12 @@ veins.add_weighted_edges_from(
         (88, 92, 5),  # dorsal venous arch
         (90, 91, 2),  # dorsal venous arch
         (90, 93, 4),  # deep plantar vein
+        (93, 96, 1),
         (91, 94, 5),  # deep plantar vein
-        (94, 96, 2),  # top of foot
+        (94, 97, 2),  # top of foot
+        (97, 96, 1),
         (94, 130, 11),  # anterior/posterior tibial vein
-        (96, 130, 10),  # anterior/posterior tibial vein
+        (97, 130, 10),  # anterior/posterior tibial vein
         (130, 132, 3),  # popliteal vein
         (96, 132, 14),  # small saphenous vein
         (131, 132, 3),  # superior genicular vein
@@ -112,6 +117,8 @@ veins.add_weighted_edges_from(
         (106, 107, 2),  # dorsal digital vein
         (107, 114, 1),  # dorsal venous arch
         (108, 107, 1),  # dorsal venous arch
+        (109, 108, 1),
+        (109, 101, 1),
         (111, 112, 1),  # dorsal venous arch
         (111, 100, 1),  # dorsal venous arch
         (110, 112, 1),  # dorsal venous arch
@@ -162,6 +169,7 @@ veins.add_weighted_edges_from(
         (173, 172, 3),  # renal vein
         (174, 172, 3),  # renal vein
         (175, 172, 3),  # renal vein
+        (138, 95, 3),
     ]
 )
 
