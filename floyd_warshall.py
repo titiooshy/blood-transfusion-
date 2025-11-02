@@ -5,10 +5,12 @@ import math as mt
 from operator import itemgetter
 import networkx as nx
 from graph_setup import veins
+import time
 
+start_time = time.time()
 heart_node = 51
 
-# setting up all the vertices that a blood transfer can start at
+#setting up all the vertices that a blood transfer can start at
 start_vertices = []
 
 for v in range(1, 24):
@@ -38,7 +40,16 @@ start_vertices.append(184)
 
 def main_algo():
     """
-    Runs the floyd Warshall algorithm
+    Runs the Floyd Warshall algorithm for shortest path to the heart node.
+
+    Args:
+        Nothing so far.
+
+    Returns:
+        min_distance: The smallest distance from any site to the heart.
+        best_locations (list): Vertices that have the shortest distance to the heart.
+        best_of_ten (list): The 10 closest vertices overall.
+        distances_to_heart (dict): All computed distances from start points to the heart.
     """
     path_lengths = dict(
         nx.floyd_warshall(veins, weight="weight")
@@ -46,6 +57,7 @@ def main_algo():
     distances_to_heart = {}
     all_nodes = list(veins.nodes())  # extracting the distance to the heart
 
+    # loop through each possible start node
     for start_node in start_vertices:
         if start_node == heart_node:
             continue
@@ -76,7 +88,18 @@ def main_algo():
 
 
 def display_results(min_distance, sorted_best_sites, top_10_sites, total_distances):
-    """Prints the analysis results in a formatted output."""
+    """
+    Prints the analysis results in a formatted output.
+
+    Args:
+        min_distance: Shortest distance found.
+        sorted_best_sites (list): Sites that have the shortest possible distance.
+        top_10_sites (list): Top 10 closest injection sites.
+        total_distances (dict): Distances for all computed sites.
+
+    Returns:
+        Nothing no return statement
+    """
     # Display all possible paths
     print("\n--- SHORTEST SEGMENTS FOR ALL REACHABLE VERTICES ---")
     all_reachable_vertices = sorted(total_distances.items(), key=itemgetter(0))
@@ -102,10 +125,14 @@ def display_results(min_distance, sorted_best_sites, top_10_sites, total_distanc
             print(f"Rank {rank}: Vertex {node} (Length: {int(dist)} segments)")
 
 
-# Standard Python execution block
+
 if __name__ == "__main__":
-    # Catch the extra return value (all_distances)
+    #prints out all of the distances for possible paths
     min_dist, best_locations, best_of_ten, all_distances = main_algo()
 
-    # Pass all necessary values to display_results
+    #display the fastest paths
     display_results(min_dist, best_locations, best_of_ten, all_distances)
+
+end_time = time.time()  #record the end time
+execution_time = end_time - start_time
+print(f"Execution time: {execution_time} seconds")
